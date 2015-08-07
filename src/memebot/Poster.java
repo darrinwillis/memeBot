@@ -11,9 +11,11 @@ import com.restfb.FacebookClient;
 public class Poster {
 
 	public static void main(String[] args) throws IOException {
-		String test = "ayy lmao";
+		
 		FacebookClient facebookClient = new DefaultFacebookClient(getToken("accessToken.txt"));
-		System.out.println(test);
+		String pageID = getToken("id.txt");
+		System.out.println("created connection to page");
+		
 		return;
 		
 
