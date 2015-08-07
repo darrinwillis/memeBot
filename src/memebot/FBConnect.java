@@ -6,7 +6,9 @@ import java.io.IOException;
 
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
+import com.restfb.Parameter;
 import com.restfb.exception.FacebookException;
+import com.restfb.types.FacebookType;
 import com.restfb.types.Page;
 import com.restfb.types.User;
 
@@ -20,15 +22,18 @@ public class FBConnect {
 	private Page mypage = null; // for later use.
 	private int counter = 0;
 
-	public void FacebookConnector() {
+	public FBConnect() {
 		try {
-			pageAccessToken = getToken("accesToken.txt");
+			pageAccessToken = getToken("accessToken.txt");
+			
 			pageID = getToken("id.txt");
-			System.out.println("grabbed acces token and page ID");
+			System.out.println("grabbed access token and page ID");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			System.out.print("failed to get tokens");
 			e.printStackTrace();
 		} 
+		
 		try {
 
 			fbClient = new DefaultFacebookClient(pageAccessToken);
@@ -39,6 +44,7 @@ public class FBConnect {
 		} catch (FacebookException ex) { // So that you can see what went wrong
 			ex.printStackTrace(System.err); // in case you did anything
 											// incorrectly HAPPY DARRIN
+			System.out.print("failed to connect");
 		}
 	}
 
@@ -68,7 +74,7 @@ public class FBConnect {
 				pageID + "/feed",
 				FacebookType.class,
 				Parameter.with("message", Integer.toString(counter)
-						+ ": Hello, facebook World!"));
+						+ ": Hello, facebook World did this work?!"));
 		counter++;
 	}
 
