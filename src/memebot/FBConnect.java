@@ -13,8 +13,8 @@ import com.restfb.types.User;
 public class FBConnect {
 
 	/* Variables */
-	private final String pageAccessToken = getToken("accessToken.txt");
-	private final String pageID = getToken("id.txt");
+	private String pageAccessToken = null;
+	private String pageID = null;
 	private FacebookClient fbClient;
 	private User myuser = null; // Store references to your user and page
 	private Page mypage = null; // for later use.
@@ -22,14 +22,23 @@ public class FBConnect {
 
 	public void FacebookConnector() {
 		try {
+			pageAccessToken = getToken("accesToken.txt");
+			pageID = getToken("id.txt");
+			System.out.println("grabbed acces token and page ID");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		try {
 
 			fbClient = new DefaultFacebookClient(pageAccessToken);
 			myuser = fbClient.fetchObject("me", User.class);
 			mypage = fbClient.fetchObject(pageID, Page.class);
 			counter = 0;
+			System.out.println("connected client without fail");
 		} catch (FacebookException ex) { // So that you can see what went wrong
 			ex.printStackTrace(System.err); // in case you did anything
-											// incorrectly
+											// incorrectly HAPPY DARRIN
 		}
 	}
 
