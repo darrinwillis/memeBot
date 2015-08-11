@@ -14,9 +14,7 @@ public class Poster {
 		
 		FBConnect connection = new FBConnect();
 		connection.makeTestPost();
-		connection.makeTestPost();
-		connection.makeTestPost();
-		connection.makeTestPost();
+		connection.postPhoto("/photos/dank.jpg", "test");
 		System.out.println("done");
 		return;
 		

@@ -3,6 +3,7 @@ package memebot;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Random;
 
 import com.restfb.BinaryAttachment;
 import com.restfb.DefaultFacebookClient;
@@ -76,7 +77,8 @@ public class FBConnect {
 				FacebookType.class,
 				Parameter.with("message", Integer.toString(counter)
 						+ ": Hello, facebook World did this work?!"));
-		counter++;
+		Random rand = new Random();
+		counter = rand.nextInt(50);
 	}
 	public void postPhoto(String photo, String caption){
 		//This method will generate a photo post given a file path to a photo, and a caption
