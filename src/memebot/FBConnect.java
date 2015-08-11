@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import com.restfb.BinaryAttachment;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.Parameter;
@@ -76,6 +77,13 @@ public class FBConnect {
 				Parameter.with("message", Integer.toString(counter)
 						+ ": Hello, facebook World did this work?!"));
 		counter++;
+	}
+	public void postPhoto(String photo, String caption){
+		//This method will generate a photo post given a file path to a photo, and a caption
+		FacebookType publishPhotoResponse = fbClient.publish("me/photos", FacebookType.class,
+				  BinaryAttachment.with(photo, getClass().getResourceAsStream(photo)),
+				  Parameter.with("message", caption));
+				System.out.println("Published photo ID: " + publishPhotoResponse.getId());
 	}
 
 }
