@@ -13,8 +13,8 @@ public class Poster {
 	public static void main(String[] args) throws IOException {
 		
 		FBConnect connection = new FBConnect();
-		connection.makeTestPost();
-		connection.postPhoto("/photos/dank.jpg", "test");
+		//connection.makeTestPost();
+		connection.postPhoto("photos/dank.jpg", "test");
 		System.out.println("done");
 		return;
 		
